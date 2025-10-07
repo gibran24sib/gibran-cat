@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -27,7 +26,24 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $request->validate([
+            'nama'       => 'required|max:10',
+            'email'      => ['required', 'email'],
+            'pertanyaan' => 'required|max:300|min:8',
+        ], [
+            'nama.required' => 'Nama tidak boleh kosong',
+            'email.email'   => 'Email Tidak valid',
+        ]);
+
+        //dd($request->all());
+        $data['nama']       = $request->nama;
+        $data['email']      = $request->email;
+        $data['pertanyaan'] = $request->pertanyaan;
+
+        //return view('home-question-respon', $data);
+        return redirect()->back()
+            ->with('info_terimakasih', 'Terimakasih atas petanyaannya <b>' . $data['nama'] .'</b>!
+                            Silahkan cek email anda di <b> '.$data['email'].'</b> untuk respon lebih lanjut !');
     }
 
     /**
