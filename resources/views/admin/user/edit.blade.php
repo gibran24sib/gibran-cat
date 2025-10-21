@@ -58,9 +58,9 @@
                                 <div class="col-lg-4 col-sm-12">
                                     <!-- confismation password -->
                                     <div class="mb-3">
-                                        <label for="password" class="form-label">Confirmation password</label>
-                                        <input type="password" id="password" value="{{ $dataUser->password }}"
-                                            class="form-control" name="email" required>
+                                        <label for="password_confirmation" class="form-label">Confirmation password</label>
+                                        <input type="password_confirmation" id="password_confirmation" value="{{ $dataUser->password }}"
+                                            class="form-control" name="password_confirmation" required>
                                     </div>
                                 </div>
 
